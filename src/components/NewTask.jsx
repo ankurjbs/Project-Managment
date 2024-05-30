@@ -1,12 +1,16 @@
 import { useRef, useState } from "react";
 
 export default function NewTask({ onAdd, onDelete }) {
-  const [enteredTask, setEnteredTask] = useState();
-
+  //   const [enteredTask, setEnteredTask] = useState();
+  // initially here i am not sending any value after typing its taking string. first time it will showing undefined
+  const [enteredTask, setEnteredTask] = useState("");
   function handleChange(event) {
     setEnteredTask(event.target.value);
   }
   function handleClick() {
+    if (enteredTask.trim() === "") {
+      return;
+    }
     onAdd(enteredTask);
     setEnteredTask("");
   }
